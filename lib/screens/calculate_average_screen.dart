@@ -1,5 +1,6 @@
 import 'package:calculatorgradeaverage/data/average_data.dart';
 import 'package:calculatorgradeaverage/constants/constants.dart';
+import 'package:calculatorgradeaverage/lesson_list.dart';
 import 'package:calculatorgradeaverage/model/lessons.dart';
 import 'package:calculatorgradeaverage/show_average.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,6 +24,7 @@ class _CalculateAverageScreenState extends State<CalculateAverageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -51,10 +53,22 @@ class _CalculateAverageScreenState extends State<CalculateAverageScreen> {
             ),
             //list
             Expanded(
-                child: Container(
-              child: Text("Liste Buraya Gelecek"),
-              color: Colors.blue,
-            ))
+                child:LessonList(onDismiss:
+
+                (index){
+
+
+                  DataHelper.allAddLessons.removeAt(index);
+                  setState(() {
+
+
+                  });
+    },
+            ),
+
+
+                ),
+
           ],
         ));
   }
